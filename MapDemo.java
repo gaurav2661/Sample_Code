@@ -38,6 +38,7 @@ public class MapDemo {
         profile.put("age" ,28);
 
         profile.put("dept" ,"cs");
+        profile.put("ststuts","single")
 
         profile.put("city" ,"new york");
         userProfile.put("shiva",profile);
