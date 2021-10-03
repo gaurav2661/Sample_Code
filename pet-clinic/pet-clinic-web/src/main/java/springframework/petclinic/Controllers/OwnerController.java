@@ -8,11 +8,9 @@ import springframework.petclinic.services.OwnerService;
 @RequestMapping("/owners")
 @Controller
 public class OwnerController {
-    private final OwnerService ownerService;
+     OwnerService ownerService;
 
-    public OwnerController(OwnerService ownerService) {
-        this.ownerService = ownerService;
-    }
+
 
     @RequestMapping({"","/","/index","/index.html"})
     public String listOwners(Model model){
