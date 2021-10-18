@@ -4,11 +4,12 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import springframework.petclinic.Model.Owner;
 import springframework.petclinic.Model.Pet;
-import springframework.petclinic.services.CrudService;
 import springframework.petclinic.services.OwnerService;
 import springframework.petclinic.services.PetService;
 import springframework.petclinic.services.petTypeService;
 
+import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 @Service
 @Profile({"default","map"})
@@ -16,9 +17,14 @@ public class OwnerServiceMap extends AbstractMapService<Owner , Long> implements
     private final petTypeService pettypeService;
     private final PetService petService;
 
+
+
+
     public OwnerServiceMap(petTypeService pettypeService, PetService petService) {
         this.pettypeService = pettypeService;
         this.petService = petService;
+
+
     }
 
     @Override
@@ -67,6 +73,11 @@ public class OwnerServiceMap extends AbstractMapService<Owner , Long> implements
 
     @Override
     public Owner findByLastName(String lastName) {
-        return null;
+        Set<Owner> owners =super.findAll();
+        for(Owner owner:owners){
+            if(Objects.equals(owner.getLastName(), lastName)){
+                return owner;
+            }
+        }return null;
     }
 }

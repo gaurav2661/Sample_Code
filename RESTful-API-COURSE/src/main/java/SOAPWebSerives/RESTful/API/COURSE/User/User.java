@@ -1,15 +1,37 @@
 package SOAPWebSerives.RESTful.API.COURSE.User;
 
+import org.springframework.stereotype.Component;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
-
+@Component
 public class User {
+
     private Integer id;
+
+    @Size(min = 2,message = "Name should have atleast 2 characters")
     private String firstName;
+
     private String lastName;
     private String emailId;
+
+
     private Long mobileNumber;
 
+    private List<Post> userPosts = new ArrayList<>();
+
+    public List<Post> getUserPosts() {
+        return userPosts;
+    }
+
+    public void addUserPosts(Post userPosts) {
+        this.userPosts.add(userPosts);
+    }
 
     public User() {
     }

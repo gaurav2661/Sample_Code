@@ -1,0 +1,48 @@
+{
+  "id": "",
+  "brand": "Hp",
+  "name": "Elitebook 870",
+  "cpu": {
+    "name": "Intel Atom® Processor S1200 Product Family",
+    "brand": "intel",
+    "number_cores": 6,
+    "number_threads": 11,
+    "min_ghz": 2.9532496277713456,
+    "max_ghz": 3.112785191136842
+  },
+  "ram": {
+    "value": 6,
+    "unit": "GIGABYTE"
+  },
+  "gpus": [],
+  "storage": [{
+    "driver": "SDD",
+    "memory": {
+      "value": 5,
+      "unit": "GIGABYTE"
+    }
+  }, {
+    "driver": "HDD",
+    "memory": {
+      "value": 842,
+      "unit": "TERABYTE"
+    }
+  }],
+  "screen": {
+    "size": 16.735905,
+    "resolution": {
+      "width": 2531,
+      "height": 1424
+    },
+    "panel": "OLED",
+    "multitouch": false
+  },
+  "keyboard": {
+    "layout": "QWERTZ",
+    "backlit": true
+  },
+  "kg": 2.605720036499542,
+  "price_usd": 2802.7215836627183,
+  "release_year": 2018,
+  "updated_at": "1970-01-01T00:00:00Z"
+}

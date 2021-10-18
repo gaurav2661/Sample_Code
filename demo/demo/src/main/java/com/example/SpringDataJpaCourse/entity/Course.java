@@ -66,6 +66,7 @@ public class Course {
         this.id = id;
     }
 
+
     public String getName() {
         return name;
     }

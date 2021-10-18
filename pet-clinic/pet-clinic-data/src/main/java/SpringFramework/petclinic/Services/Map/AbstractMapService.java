@@ -2,6 +2,7 @@ package springframework.petclinic.services.Map;
 
 import org.hibernate.dialect.LobMergeStrategy;
 import springframework.petclinic.Model.BaseEntity;
+import springframework.petclinic.Model.Owner;
 
 import java.util.*;
 
@@ -42,4 +43,6 @@ public abstract class AbstractMapService<T extends BaseEntity,ID extends Long> {
         }
         return nexId;
     }
+
+
 }
