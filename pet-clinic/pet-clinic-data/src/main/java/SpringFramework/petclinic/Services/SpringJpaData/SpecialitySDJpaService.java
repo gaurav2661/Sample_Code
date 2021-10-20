@@ -32,7 +32,8 @@ public class SpecialitySDJpaService implements SpecialitiesService {
 
     @Override
     public Speciality save(Speciality object) {
-        return null;
+       return specialityRepository.save(object);
+
     }
 
     @Override
