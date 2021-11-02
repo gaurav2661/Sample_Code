@@ -6,6 +6,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.extension.Extension;
 import org.springframework.boot.test.context.SpringBootTest;
 import src.main.proto.Laptop;
+import src.main.proto.LaptopMessage;
 
 import java.io.IOException;
 
@@ -17,12 +18,12 @@ class SerializerTest {
     @Test
     void writeBinaryFile() throws IOException {
         String binaryFile = "laptop.bin";
-        Laptop laptop = new Generator().newLaptop();
+        LaptopMessage.Laptop laptop = new Generator().newLaptop();
 
         Serializer serializer =new Serializer();
         serializer.writeBinaryFile(laptop,binaryFile);
 
-        Laptop laptop1 = serializer.readFromBinaryFile(binaryFile);
+        LaptopMessage.Laptop laptop1 = serializer.readFromBinaryFile(binaryFile);
 
         assertEquals(laptop,laptop1);
     }

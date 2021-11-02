@@ -13,6 +13,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>brewery</name>
 	<description>brewery project</description>
+
 	<properties>
 		<java.version>11</java.version>
 		<mapstruct.version>1.4.2.Final</mapstruct.version>
@@ -34,14 +35,12 @@
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>1.18.22</version>
-			<scope>provided</scope>
+			<version>${org.lombok.version}</version>
+			<optional>true</optional>
 		</dependency>
-
 		<dependency>
 			<groupId>org.mapstruct</groupId>
 			<artifactId>mapstruct</artifactId>
@@ -52,11 +51,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>javax.validation</groupId>
-			<artifactId>validation-api</artifactId>
-			<version>2.0.1.Final</version>
-		</dependency>
 	</dependencies>
 
 	<build>
@@ -64,12 +58,11 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<version>${project.parent.version}</version>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.1</version>
+				<version>3.8.0</version>
 				<configuration>
 					<annotationProcessorPaths>
 						<path>
@@ -93,7 +86,7 @@
 					</compilerArgs>
 				</configuration>
 			</plugin>
-
 		</plugins>
 	</build>
+
 </project>

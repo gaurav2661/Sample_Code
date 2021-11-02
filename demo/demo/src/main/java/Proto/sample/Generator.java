@@ -8,21 +8,21 @@ import java.util.Random;
 public class Generator {
     private Random random;
 
-    public Keyboard keyboard(){
-        return Keyboard.newBuilder().setLayout(randomKeyboardLayout()).setBacklit(random.nextBoolean()).build();
+    public KeyboardMessage.Keyboard keyboard(){
+        return KeyboardMessage.Keyboard.newBuilder().setLayout(randomKeyboardLayout()).setBacklit(random.nextBoolean()).build();
     }
 
-    private Keyboard.Layout randomKeyboardLayout() {
+    private KeyboardMessage.Keyboard.Layout randomKeyboardLayout() {
         switch (random.nextInt(3)){
             case 1:
-                return Keyboard.Layout.QWERTY;
+                return KeyboardMessage.Keyboard.Layout.QWERTY;
             case 2:
-                return Keyboard.Layout.QWERTZ;
+                return KeyboardMessage.Keyboard.Layout.QWERTZ;
             default:
-                return Keyboard.Layout.AZERTY;
+                return KeyboardMessage.Keyboard.Layout.AZERTY;
         }
     }
-    public CPU newCpu(){
+    public ProcessorMessage.CPU newCpu(){
         String brand=randomCpuBrand();
         String name = randomCpuName(brand);
         int numberCores=randomInt(2,8);
@@ -30,45 +30,45 @@ public class Generator {
 
         double minGhz=randomDouble(2.0,3.5);
         double maxghz=randomDouble(minGhz,5.0);
-        return CPU.newBuilder().setBrand(brand).setName(name)
+        return ProcessorMessage.CPU.newBuilder().setBrand(brand).setName(name)
                 .setNumberCores(numberCores).setNumberThreads(numberThreads)
                 .setMinGhz(minGhz).setMaxGhz(maxghz).build();
 
     }
-    public GPU gpu(){
+    public ProcessorMessage.GPU gpu(){
         String brand=randomGpuBrand();
         String name = randomGpuName(brand);
 
         double minGhz = randomDouble(1.0,1.5);
         double maxGhz = randomDouble(minGhz,2.0);
 
-        Memory memory = Memory.newBuilder().setValue(randomInt(2,6)).setUnit(Memory.Unit.GIGABYTE).build();
-        return  GPU.newBuilder().setBrand(brand).setName(name).setMinGhz(minGhz).setMaxGhz(maxGhz).setMemory(memory).build();
+        MemoryMessage.Memory memory = MemoryMessage.Memory.newBuilder().setValue(randomInt(2,6)).setUnit(MemoryMessage.Memory.Unit.GIGABYTE).build();
+        return  ProcessorMessage.GPU.newBuilder().setBrand(brand).setName(name).setMinGhz(minGhz).setMaxGhz(maxGhz).setMemory(memory).build();
 
     }
-    public Memory newRam(){
-        return Memory.newBuilder().setValue(randomInt(4,64)).setUnit(Memory.Unit.GIGABYTE).build();
+    public MemoryMessage.Memory newRam(){
+        return MemoryMessage.Memory.newBuilder().setValue(randomInt(4,64)).setUnit(MemoryMessage.Memory.Unit.GIGABYTE).build();
     }
-    public Storage NewSSD(){
-        Memory memory = Memory.newBuilder().setValue(randomInt(128,1024))
-                .setUnit(Memory.Unit.TERABYTE).build();
-        return Storage.newBuilder().setMemory(memory).setDriver(Storage.Driver.HDD).build();
+    public StorageMessage.Storage NewSSD(){
+        MemoryMessage.Memory memory = MemoryMessage.Memory.newBuilder().setValue(randomInt(128,1024))
+                .setUnit(MemoryMessage.Memory.Unit.TERABYTE).build();
+        return StorageMessage.Storage.newBuilder().setMemory(memory).setDriver(StorageMessage.Storage.Driver.HDD).build();
     }
-    public Storage NewHDD(){
-        Memory memory = Memory.newBuilder().setValue(randomInt(1,6))
-                .setUnit(Memory.Unit.GIGABYTE).build();
-        return Storage.newBuilder().setMemory(memory).setDriver(Storage.Driver.SDD).build();
+    public StorageMessage.Storage NewHDD(){
+        MemoryMessage.Memory memory = MemoryMessage.Memory.newBuilder().setValue(randomInt(1,6))
+                .setUnit(MemoryMessage.Memory.Unit.GIGABYTE).build();
+        return StorageMessage.Storage.newBuilder().setMemory(memory).setDriver(StorageMessage.Storage.Driver.SDD).build();
     }
-    public Screen newScreen(){
+    public ScreenMessage.Screen newScreen(){
         int height = randomInt(1080,4320);
         int width = height * 16/9;
-        Screen.Resolution resolution= Screen.Resolution.newBuilder()
+        ScreenMessage.Screen.Resolution resolution= ScreenMessage.Screen.Resolution.newBuilder()
                 .setHeight(height).setWidth(width).build();
-        return Screen.newBuilder().setResolution(resolution)
+        return ScreenMessage.Screen.newBuilder().setResolution(resolution)
                 .setMultitouch(random.nextBoolean()).setSize(randomFloat(13,17))
                 .setPanel(randomScreenPanel()).build();
     }
-    public Laptop newLaptop(){
+    public LaptopMessage.Laptop newLaptop(){
         random = new Random();
         String brand = randomStringFromSet("Apple","Hp","Lenovo");
         String name = randomLaptopName(brand);
@@ -76,7 +76,7 @@ public class Generator {
         double priceUSD = randomDouble(1500,3000);
         int releaseYear = randomInt(2015,2021);
 
-        return Laptop.newBuilder().setBrand(brand).setName(name)
+        return LaptopMessage.Laptop.newBuilder().setBrand(brand).setName(name)
                 .setPriceUsd(priceUSD)
                 .setReleaseYear(releaseYear)
                 .setCpu(newCpu())
@@ -100,11 +100,11 @@ public class Generator {
         }
     }
 
-    private Screen.Panel randomScreenPanel() {
+    private ScreenMessage.Screen.Panel randomScreenPanel() {
         if(random.nextBoolean()){
-            return Screen.Panel.IPS;
+            return ScreenMessage.Screen.Panel.IPS;
         }
-        return Screen.Panel.OLED;
+        return ScreenMessage.Screen.Panel.OLED;
     }
 
 
@@ -166,7 +166,7 @@ public class Generator {
     }
     public static void main(String args[]){
         Generator generator = new Generator();
-        Laptop laptop = generator.newLaptop();
+        LaptopMessage.Laptop laptop = generator.newLaptop();
         System.out.println(laptop);
     }
 
