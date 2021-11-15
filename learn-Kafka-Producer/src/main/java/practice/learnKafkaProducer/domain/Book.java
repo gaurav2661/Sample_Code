@@ -9,8 +9,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Builder
-public class LibraryEvent {
-    private Integer libraryEventId;
-    private Book book;
-    private LibraryEventType libraryEventType;
+public class Book {
+    private String bookName;
+    private String ISBN;
+    private String bookAuthor;
+    private String bookPublisher;
+
 }
